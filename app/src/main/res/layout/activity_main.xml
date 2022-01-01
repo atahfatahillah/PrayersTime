@@ -8,10 +8,10 @@
     tools:context=".view.MainActivity">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/datetimeToday"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="28 Muharram 1436H/3 Sept 2020"
+        tools:text="28 Muharram 1436H/3 Sept 2020"
         android:textSize="22sp"
         android:textStyle="bold"
         android:textColor="@color/greyText"
@@ -20,39 +20,174 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView3"
-        android:layout_marginTop="5sp"
+        android:id="@+id/currentLocation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Jakarta Barat, Indonesia"
+        android:layout_marginTop="5sp"
+        android:textColor="@color/greyText"
         android:textSize="16sp"
         android:textStyle="normal"
-        android:textColor="@color/greyText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/datetimeToday"
+        tools:text="Jakarta Barat, Indonesia" />
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="15sp"
-        android:layout_marginEnd="15sp"
         android:layout_marginTop="30sp"
+        android:layout_marginEnd="15sp"
         app:cardElevation="8sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3">
+        app:layout_constraintTop_toBottomOf="@+id/currentLocation">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvWaktuShalat"
-                tools:itemCount="5"
-                tools:listitem="@layout/item_waktu_shalat"
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:padding="20sp"
+                android:weightSum="2">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Fajr"
+                    android:textColor="@color/greyText"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvShubuhTime"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textAlignment="viewEnd"
+                    android:textColor="@color/greyText"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    tools:text="--:--" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:padding="20sp"
+                android:weightSum="2">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Dhuhr"
+                    android:textColor="@color/greyText"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvDzuhurTime"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textAlignment="viewEnd"
+                    android:textColor="@color/greyText"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    tools:text="--:--" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:padding="20sp"
+                android:weightSum="2">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Asr"
+                    android:textColor="@color/greyText"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvAsharTime"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textAlignment="viewEnd"
+                    android:textColor="@color/greyText"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    tools:text="--:--" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:padding="20sp"
+                android:weightSum="2">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Maghrib"
+                    android:textColor="@color/greyText"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvMaghribTime"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textAlignment="viewEnd"
+                    android:textColor="@color/greyText"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    tools:text="--:--" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:padding="20sp"
+                android:weightSum="2">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Isha"
+                    android:textColor="@color/greyText"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvIsyaTime"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textAlignment="viewEnd"
+                    android:textColor="@color/greyText"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    tools:text="--:--" />
+            </LinearLayout>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
