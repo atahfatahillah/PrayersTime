@@ -1,6 +1,7 @@
 package id.umma.prayertimes.fatahillah.view;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -10,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider;
 import java.util.Locale;
 
 import id.umma.prayertimes.fatahillah.R;
+import id.umma.prayertimes.fatahillah.db.PrayerTime;
 import id.umma.prayertimes.fatahillah.models.Times;
 import id.umma.prayertimes.fatahillah.utils.Utils;
 import id.umma.prayertimes.fatahillah.viewmodel.MainActivityViewModel;
@@ -57,6 +59,27 @@ public class MainActivity extends AppCompatActivity {
                 tvMaghribTime.setText(times.getMaghrib());
                 tvIsyaTime.setText(times.getIsha());
             } else {
+                viewModel.getPrayerTimeList().observe(this, prayerTimes -> {
+                    for (PrayerTime prayerTime : prayerTimes) {
+                        switch (prayerTime.getShalat_code()) {
+                            case "fajr":
+                                tvShubuhTime.setText(prayerTime.getShalat_time());
+                                break;
+                            case "dhuhr":
+                                tvDzuhurTime.setText(prayerTime.getShalat_time());
+                                break;
+                            case "asr":
+                                tvAsharTime.setText(prayerTime.getShalat_time());
+                                break;
+                            case "maghrib":
+                                tvMaghribTime.setText(prayerTime.getShalat_time());
+                                break;
+                            case "isha":
+                                tvIsyaTime.setText(prayerTime.getShalat_time());
+                                break;
+                        }
+                    }
+                });
                 Toast.makeText(MainActivity.this, "unable to fetch data", Toast.LENGTH_SHORT).show();
             }
         });
